@@ -6,7 +6,11 @@ const config = {
   entry: paths.indexJs,
   output: {
     path: paths.dist,
-    filename: '[name].[hash:5].js'
+    filename: '[name].[hash:5].js',
+    libraryTarget: 'commonjs2'
+  },
+  externals: {
+    express: 'express'
   }
 };
 module.exports = config;
