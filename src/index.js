@@ -2,8 +2,24 @@ import express from 'express';
 
 const app = express();
 
-app.get('/', function(req, res) {
-  res.send('Hello World!');
+app.use(express.static('public'));
+app.use(express.static('dist'));
+app.get('*', function(req, res) {
+  console.log({
+    a: {
+      b: {
+        c: 1
+      }
+    }
+  });
+  // console.log(res);
+  res.json({
+    a: {
+      b: {
+        c: 1
+      }
+    }
+  });
 });
 
 app.listen(3000, function() {
