@@ -1,27 +1,16 @@
 import express from 'express';
+import renderApp from './renderApp';
 
 const app = express();
 
 app.use(express.static('public'));
-app.use(express.static('dist'));
-app.get('*', function(req, res) {
-  console.log({
-    a: {
-      b: {
-        c: 1
-      }
-    }
-  });
-  // console.log(res);
-  res.json({
-    a: {
-      b: {
-        c: 1
-      }
-    }
-  });
-});
+app.get('*', renderApp);
+// app.get('/', function(req, res) {
+//   return res.send(res.html);
+// });
 
 app.listen(3000, function() {
   console.log('Example app listening on port 3000!');
 });
+
+export default app;

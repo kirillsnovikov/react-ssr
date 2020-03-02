@@ -11,6 +11,9 @@ const config = {
   },
   externals: {
     express: 'express'
+  },
+  module: {
+    rules: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }]
   }
 };
 module.exports = config;
