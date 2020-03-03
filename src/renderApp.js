@@ -4,7 +4,7 @@ import { StaticRouter as Router } from 'react-router-dom';
 import paths from '../build/paths';
 import path from 'path';
 import fs from 'fs';
-import App from './App';
+import App from './shared/App';
 
 // const myApp = 'React ServerSideRender Application';
 
@@ -19,9 +19,9 @@ const renderApp = (req, res) => {
       data.replace(
         '<div id="root"></div>',
         `<div id="root">${ReactDOMServer.renderToString(
-          <Router location={req.url} context={context}>
-            <App route={req.url} />
-          </Router>
+          // <Router location={req.url} context={context}>
+          <App route={req.url} />
+          // </Router>
         )}</div>`
       )
     );
