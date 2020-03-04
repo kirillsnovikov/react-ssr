@@ -11,7 +11,7 @@ const { filenameHtml, dist } = paths;
 
 const app = express();
 app.use('/assets', express.static(dist));
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   console.log('rrr');
   const context = {};
   const app = ReactDOMServer.renderToString(
@@ -20,7 +20,6 @@ app.get('/', (req, res) => {
     </StaticRouter>
   );
 
-  console.log(context);
   fs.readFile(filenameHtml, 'utf-8', (err, data) => {
     if (err) {
       console.error(err);

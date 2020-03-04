@@ -1,19 +1,27 @@
 import React from 'react';
-// import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
+import Routes from './routes';
+import NotFound from './components/pages/NotFound';
 
 const App = () => {
-  return <h2>Accountss</h2>;
+  return (
+    <React.Fragment>
+      {links}
+      <Switch>
+        {routes}
+        <Route component={NotFound} />
+      </Switch>
+    </React.Fragment>
+  );
 };
 
-// const Child = props => {
-//   let { id } = useParams();
-//   console.log(props, 'ID');
-
-//   return (
-//     <div>
-//       <h3>ID: {id}</h3>
-//     </div>
-//   );
-// };
+const routes = Routes.map(({ component, path, exact }) => {
+  return <Route path={path} key={path} exact={exact} component={component} />;
+});
+const links = Routes.map(({ path, name }) => (
+  <Link to={path} key={name}>
+    {name}
+  </Link>
+));
 
 export default App;
