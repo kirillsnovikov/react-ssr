@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import express from 'express';
-import App from '../shared/App';
+import App from '../shared/components/App';
 import paths from '../../build/paths';
 import fs from 'fs';
 

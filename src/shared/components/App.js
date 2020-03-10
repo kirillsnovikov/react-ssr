@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
-import Routes from './routes';
-import NotFound from './components/pages/NotFound';
+import Routes from '../routes';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   return (
