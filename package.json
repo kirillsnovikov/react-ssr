@@ -12,11 +12,8 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-<<<<<<< HEAD
     "mongoose": "^5.9.3",
-=======
     "mysql2": "^2.1.0",
->>>>>>> 947129bb394e20ad8fa5b13def06fd1d85bfa41f
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",
