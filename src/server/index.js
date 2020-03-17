@@ -11,8 +11,8 @@ const { filenameHtml, dist } = paths;
 
 const app = express();
 app.use('/assets', express.static(dist));
+app.use(router);
 app.get('*', (req, res) => {
-  console.log('rrr');
   const context = {};
   const app = ReactDOMServer.renderToString(
     <StaticRouter location={req.url} context={context}>
