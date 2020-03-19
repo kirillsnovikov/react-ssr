@@ -5,13 +5,14 @@ import express from 'express';
 import App from '../shared/components/App';
 import paths from '../../build/paths';
 import fs from 'fs';
+import db from './models';
 
 const PORT = process.env.PORT || 3000;
 const { filenameHtml, dist } = paths;
 
 const app = express();
 app.use('/assets', express.static(dist));
-app.use(router);
+// app.use(router);
 app.get('*', (req, res) => {
   const context = {};
   const app = ReactDOMServer.renderToString(
@@ -31,8 +32,10 @@ app.get('*', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server run and listening PORT ${PORT}`);
+db.sequelize.sync().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server run and listening PORT ${PORT}`);
+  });
 });
 
 export default app;
