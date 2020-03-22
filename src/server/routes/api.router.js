@@ -1,5 +1,5 @@
 import express from 'express';
-import post from 'post.router';
+import post from './post.router';
 
 const router = express.Router();
 
@@ -13,3 +13,9 @@ class ApiRouter {
 const routes = {
   post
 };
+
+router.get('/all', (req, res) => {
+  console.log('ALL');
+});
+
+export default router;
