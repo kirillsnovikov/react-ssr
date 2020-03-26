@@ -1,10 +1,10 @@
-const config = {
+module.exports = {
   development: {
     username: 'root',
     password: 'dU+P0sst/',
     database: 'app_db',
     host: '127.0.0.1',
-    port: '3306',
+    port: '3307',
     dialect: 'mysql',
     operatorsAliases: 0
   },
@@ -25,5 +25,3 @@ const config = {
     operatorsAliases: false
   }
 };
-
-export default config;

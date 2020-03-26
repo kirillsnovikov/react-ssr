@@ -1,18 +1,22 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
-import express from 'express';
-import App from '../shared/components/App';
-import paths from '../../build/paths';
 import fs from 'fs';
-import db from './models';
+import express from 'express';
+import bodyParser from 'body-parser';
+import paths from '../../build/paths';
+import './models';
 import routes from './routes/api.router';
+import App from '../shared/components/App';
 
 const PORT = process.env.PORT || 3000;
 const { filenameHtml, dist } = paths;
 
 const app = express();
+
 app.use('/assets', express.static(dist));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', routes);
 
 app.get('*', (req, res) => {
@@ -34,10 +38,11 @@ app.get('*', (req, res) => {
   });
 });
 
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server run and listening PORT ${PORT}`);
-  });
+// db.sequelize.sync().then(() => {
+app.listen(PORT, () => {
+  console.log(__dirname, 'DIR');
+  console.log(`Server run and listening PORT ${PORT}`);
 });
+// });
 
 export default app;
