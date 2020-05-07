@@ -18,13 +18,13 @@ module.exports = {
   distClient,
   distServer,
   srcConfig,
-  indexClientJs: path.join(srcClient, 'index.js'),
-  indexServerJs: path.join(srcServer, 'index.js'),
+  indexClientJs: path.join(srcClient, 'index.tsx'),
+  indexServerJs: path.join(srcServer, 'index.ts'),
   templateHtml: path.join(srcClient, 'index.html'),
   filenameHtml: path.join(distClient, 'index.html'),
   models: path.join(srcServer, 'models'),
   routes: path.join(srcServer, 'routes'),
   migrations: path.join(srcDB, 'migrations'),
   seeders: path.join(srcDB, 'seeders'),
-  dbConfig: path.join(srcConfig, 'db.config.js')
+  dbConfig: path.join(srcConfig, 'db.config.ts'),
 };

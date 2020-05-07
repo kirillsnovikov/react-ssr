@@ -1,16 +1,14 @@
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom';
-import fs from 'fs';
-import express from 'express';
-import bodyParser from 'body-parser';
-import paths from '../../build/paths';
+import * as fs from 'fs';
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
+import * as paths from '../../build/paths';
 import './models';
 import routes from './routes/api.router';
-import App from '../shared/components/App';
+import main from './app';
 
 const PORT = process.env.PORT || 3000;
 const { filenameHtml, dist } = paths;
+console.log(filenameHtml, dist);
 
 const app = express();
 
@@ -21,19 +19,15 @@ app.use('/api', routes);
 
 app.get('*', (req, res) => {
   const context = {};
-  const app = ReactDOMServer.renderToString(
-    <StaticRouter location={req.url} context={context}>
-      <App />
-    </StaticRouter>
-  );
+  const root = main(req, context);
 
   fs.readFile(filenameHtml, 'utf-8', (err, data) => {
     if (err) {
       console.error(err);
-      return res.status('404').send('Something went wrong');
+      return res.status(404).send('Something went wrong');
     }
     return res.send(
-      data.replace('<div id="root"></div>', `<div id="root">${app}</div>`)
+      data.replace('<div id="root"></div>', `<div id="root">${root}</div>`)
     );
   });
 });

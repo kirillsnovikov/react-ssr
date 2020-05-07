@@ -10,30 +10,39 @@ const {
   indexServerJs,
   indexClientJs,
   templateHtml,
-  filenameHtml
+  filenameHtml,
 } = paths;
 
 const clientConfig = {
   context: src,
   target: 'web',
   entry: {
-    client: indexClientJs
+    client: indexClientJs,
   },
   output: {
     path: distClient,
     filename: '[name].[hash:5].js',
-    publicPath: '/assets/client/'
+    publicPath: '/assets/client/',
   },
   module: {
-    rules: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }]
+    rules: [
+      {
+        test: /\.(js|jsx|tsx|ts)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.tsx', '.ts'],
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'SSR React',
       template: templateHtml,
-      filename: filenameHtml
-    })
-  ]
+      filename: filenameHtml,
+    }),
+  ],
 };
 
 const serverConfig = {
@@ -44,11 +53,20 @@ const serverConfig = {
     path: distServer,
     filename: 'server.js',
     libraryTarget: 'commonjs2',
-    publicPath: '/assets/server/'
+    publicPath: '/assets/server/',
   },
   externals: nodeExternals(),
   module: {
-    rules: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }]
-  }
+    rules: [
+      {
+        test: /\.(js|jsx|tsx|ts)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.tsx', '.ts'],
+  },
 };
 module.exports = [serverConfig, clientConfig];

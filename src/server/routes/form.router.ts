@@ -4,11 +4,11 @@ export const routes = {
   '/forms': [
     {
       type: 'get',
-      method: forms.findAll
+      method: forms.findAll,
     },
     {
       type: 'post',
-      method: forms.create
-    }
-  ]
+      method: forms.create,
+    },
+  ],
 };

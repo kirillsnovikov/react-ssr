@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import Routes from '../routes';
 import NotFound from './pages/NotFound';

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   development: {
     username: 'root',
     password: 'dU+P0sst/',
@@ -6,7 +6,7 @@ module.exports = {
     host: '127.0.0.1',
     port: '3307',
     dialect: 'mysql',
-    operatorsAliases: 0
+    operatorsAliases: 0,
   },
   test: {
     username: 'root',
@@ -14,7 +14,7 @@ module.exports = {
     database: 'database_test',
     host: '127.0.0.1',
     dialect: 'mysql',
-    operatorsAliases: false
+    operatorsAliases: false,
   },
   production: {
     username: 'root',
@@ -22,6 +22,6 @@ module.exports = {
     database: 'database_production',
     host: '127.0.0.1',
     dialect: 'mysql',
-    operatorsAliases: false
-  }
+    operatorsAliases: false,
+  },
 };
