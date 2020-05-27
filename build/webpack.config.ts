@@ -1,7 +1,10 @@
 // const webpack = require('webpack')
-const paths = require('./paths');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
+// const paths = require('./paths');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const nodeExternals = require('webpack-node-externals');
+import { paths } from './paths';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import nodeExternals from 'webpack-node-externals';
 
 const {
   src,
@@ -69,4 +72,4 @@ const serverConfig = {
     extensions: ['*', '.js', '.jsx', '.tsx', '.ts'],
   },
 };
-module.exports = [serverConfig, clientConfig];
+export = [serverConfig, clientConfig];

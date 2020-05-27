@@ -18,9 +18,9 @@ const App = () => {
 const routes = Routes.map(({ component, path, exact }) => {
   return <Route path={path} key={path} exact={exact} component={component} />;
 });
-const links = Routes.map(({ path, name }) => (
-  <Link to={path} key={name}>
-    {name}
+const links = Routes.map(({ path }) => (
+  <Link to={path} key={path}>
+    {path}
   </Link>
 ));
 

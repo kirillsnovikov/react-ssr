@@ -1,5 +1,8 @@
-const path = require('path');
-const fs = require('fs');
+import * as path from 'path';
+import * as fs from 'fs';
+
+// const path = require('path');
+// const fs = require('fs');
 
 const rootDirectory = fs.realpathSync(process.cwd());
 
@@ -7,12 +10,12 @@ const src = path.join(rootDirectory, 'src');
 const dist = path.join(rootDirectory, 'dist');
 const srcClient = path.join(src, 'client');
 const srcConfig = path.join(src, 'config');
-const srcDB = path.join(src, 'db');
 const srcServer = path.join(src, 'server');
+const srcDB = path.join(srcServer, 'db');
 const distClient = path.join(dist, 'client');
 const distServer = path.join(dist, 'server');
 
-module.exports = {
+export const paths = {
   src,
   dist,
   distClient,
@@ -26,5 +29,4 @@ module.exports = {
   routes: path.join(srcServer, 'routes'),
   migrations: path.join(srcDB, 'migrations'),
   seeders: path.join(srcDB, 'seeders'),
-  dbConfig: path.join(srcConfig, 'db.config.ts'),
 };

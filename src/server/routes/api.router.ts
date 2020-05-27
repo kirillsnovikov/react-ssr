@@ -1,15 +1,8 @@
 import * as fs from 'fs';
 import * as express from 'express';
-import paths from '../../../build/paths';
+import { paths } from '../../../build/paths';
 
-const router = express.Router();
-
-// class ApiRouter {
-//   constructor(routes, router) {
-//     this.routes = routes;
-//     this.router = router;
-//   }
-// }
+const apiRouter = express.Router();
 
 fs.readdirSync(paths.routes)
   .filter(
@@ -19,15 +12,15 @@ fs.readdirSync(paths.routes)
       file.slice(-3) === '.ts'
   )
   .forEach((file) => {
-    // console.log(file);
     import(`./${file}`).then((routes) => {
-      for (let [route, actions] of Object.entries(routes.routes)) {
+      Object.keys(routes.apiRoutes).forEach((route) => {
+        let actions = routes.apiRoutes[route];
         actions.forEach((action) => {
           let { type, method } = action;
-          router[type](route, method);
+          apiRouter[type](route, method);
         });
-      }
+      });
     });
   });
 
-export default router;
+export default apiRouter;

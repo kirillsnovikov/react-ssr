@@ -1,24 +1,24 @@
 import Home from './components/pages/Home';
 import Posts from './components/pages/Posts';
 import Forms from './components/pages/Forms';
+import { RouteProps } from 'react-router-dom';
 
-const Routes = [
+const Routes: Array<RouteProps> = [
   {
     path: '/',
     exact: true,
     component: Home,
-    name: 'home'
   },
   {
     path: '/posts',
+    exact: true,
     component: Posts,
-    name: 'posts'
   },
   {
     path: '/forms',
+    exact: true,
     component: Forms,
-    name: 'forms'
-  }
+  },
 ];
 
 export default Routes;
