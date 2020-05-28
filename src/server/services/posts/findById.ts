@@ -4,12 +4,16 @@ import httpStatusCodes from 'http-status-codes';
 import apiResponse from '../../utilites/apiResponse';
 
 export default async (req: Request, res: Response) => {
+  const { params } = req;
   const repository = await postRepository();
-  try {
-    const newPost = repository.create(req.body);
-    const result = await repository.save(newPost);
-    apiResponse.result(res, result, httpStatusCodes.CREATED);
-  } catch (e) {
-    apiResponse.error(res, httpStatusCodes.BAD_REQUEST, e.message);
+  console.log(params.id);
+
+  const data = await repository.findOne(params.id);
+
+  if (data) {
+    apiResponse.result(res, data, httpStatusCodes.OK);
+    return data;
+  } else {
+    apiResponse.error(res, httpStatusCodes.BAD_REQUEST);
   }
 };

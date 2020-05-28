@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { IBase, IPost, ITimestamps } from '../interfaces';
+import { IBase, IPost, ITimestamps } from '../../interfaces/db';
 
 export abstract class BasePost implements IBase, IPost, ITimestamps {
   @PrimaryGeneratedColumn()

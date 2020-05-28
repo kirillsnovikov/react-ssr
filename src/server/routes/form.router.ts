@@ -1,28 +1,13 @@
+import * as express from 'express';
 import forms from '../controllers/form.controller';
+import { FormValidator } from '../models';
 
-export const apiRoutes = {
-  '/forms': [
-    {
-      type: 'get',
-      method: forms.find,
-    },
-    {
-      type: 'post',
-      method: forms.create,
-    },
-  ],
-  '/forms/:id': [
-    {
-      type: 'get',
-      method: forms.findById,
-    },
-    {
-      type: 'put',
-      method: forms.update,
-    },
-    {
-      type: 'delete',
-      method: forms.remove,
-    },
-  ],
-};
+const router = express.Router();
+
+router.get('', forms.find);
+router.post('', FormValidator, forms.create);
+router.get('/:id', forms.findById);
+router.put('/:id', FormValidator, forms.update);
+router.delete('/:id', forms.remove);
+
+export default router;

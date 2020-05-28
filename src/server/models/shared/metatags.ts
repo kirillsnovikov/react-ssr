@@ -1,5 +1,5 @@
 import { Column } from 'typeorm';
-import { IMeta } from '../interfaces';
+import { IMeta } from '../../interfaces/db';
 
 export class Meta implements IMeta {
   @Column({ type: 'varchar', length: 150, nullable: true })

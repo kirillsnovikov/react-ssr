@@ -5,6 +5,7 @@ import apiResponse from '../../utilites/apiResponse';
 
 export default async (req: Request, res: Response) => {
   const repository = await formRepository();
+  // console.log(req);
   const { query } = req;
   try {
     const data = await repository.find(query);

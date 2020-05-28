@@ -1,15 +1,18 @@
 import { Response } from 'express';
 import httpStatusCodes from 'http-status-codes';
 import { ICookie } from '../interfaces/api';
+import { ValidationError } from 'express-validator';
 
 export interface IApiResponse {
   result: () => void;
   error: () => void;
+  bodyErrors: () => void;
 }
 
 export default class apiResponse implements IApiResponse {
   result: () => void;
   error: () => void;
+  bodyErrors: () => void;
   static result = async (
     res: Response,
     data: object,
@@ -33,6 +36,18 @@ export default class apiResponse implements IApiResponse {
       error: {
         message: error,
       },
+      success: false,
+    });
+  };
+
+  static bodyErrors = async (
+    res: Response,
+    status: number = 422,
+    errors: ValidationError[]
+  ) => {
+    res.status(status);
+    res.json({
+      errors,
       success: false,
     });
   };

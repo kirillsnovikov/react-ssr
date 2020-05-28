@@ -5,10 +5,10 @@ import apiResponse from '../../utilites/apiResponse';
 
 export default async (req: Request, res: Response) => {
   const repository = await postRepository();
+  const { query } = req;
   try {
-    const newPost = repository.create(req.body);
-    const result = await repository.save(newPost);
-    apiResponse.result(res, result, httpStatusCodes.CREATED);
+    const data = await repository.find(query);
+    apiResponse.result(res, data, httpStatusCodes.OK);
   } catch (e) {
     apiResponse.error(res, httpStatusCodes.BAD_REQUEST, e.message);
   }
