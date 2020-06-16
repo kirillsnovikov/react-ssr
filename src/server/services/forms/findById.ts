@@ -6,7 +6,6 @@ import apiResponse from '../../utilites/apiResponse';
 export default async (req: Request, res: Response) => {
   const { params } = req;
   const repository = await formRepository();
-  console.log(params.id);
 
   const data = await repository.findOne(params.id);
 

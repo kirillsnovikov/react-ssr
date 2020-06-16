@@ -3,12 +3,9 @@ import { ConnectionOptions } from 'typeorm';
 import { config } from '../config/config';
 
 const { migrations } = paths;
-// console.log(migrations);
-// console.log(__dirname + '/migrations/**/*{.ts,.js}');
 
 const cliConfig: ConnectionOptions = {
   ...config.db,
-  //   entities: [models + '/**/*.model{.ts,.js}'],
 
   // We are using migrations, synchronize should be set to false.
   synchronize: false,

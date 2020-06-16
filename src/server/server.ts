@@ -34,12 +34,6 @@ export class App implements IApp {
 
   renderHtml(): void {
     this.app.get('*', (req, res) => {
-      console.log(
-        matchPath(req.url, {
-          path: '/forms',
-          exact: true,
-        })
-      );
       const context = {};
       const root = main(req, context);
 
@@ -74,10 +68,3 @@ export class App implements IApp {
     });
   }
 }
-
-// app.listen(PORT, (): void => {
-//   console.log(__dirname, 'DIR');
-//   console.log(`Server run and listening PORT ${PORT}`);
-// });
-
-// export default app;

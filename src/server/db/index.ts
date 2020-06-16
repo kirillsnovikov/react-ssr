@@ -1,10 +1,4 @@
-// import { Sequelize, Options, Dialect } from 'sequelize';
-import {
-  createConnection,
-  Connection,
-  ConnectionOptions,
-  // EntitySchema,
-} from 'typeorm';
+import { createConnection, Connection, ConnectionOptions } from 'typeorm';
 import { config } from '../../config/config';
 
 export type Dialect = 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql';
@@ -30,18 +24,11 @@ const configuration = <ConnectionOptions>{
   ...config.db,
 };
 
-console.log(configuration);
-// <ConnectionOptions>config.db;
-// configuration.;
-
 export class Database implements IDatabase {
   configuration: ConnectionOptions;
-  // connection: () => Promise<Connection>;
 
-  // static configuration: string;
   constructor(configuration: ConnectionOptions) {
     this.configuration = configuration;
-    // this.configuration.entities = entities;
   }
 
   public async connection(): Promise<Connection> {
@@ -67,7 +54,3 @@ export class Database implements IDatabase {
 }
 
 export const connection = new Database(configuration).connection();
-// export const connection = async () => {
-// const database = new Database(configuration);
-// return await database.connection();
-// };
