@@ -14,7 +14,9 @@ const Forms = () => {
     <div>
       {forms.map((form) => (
         <div key={form.id}>
-          {form.id}_{form.title}
+          {form.id}
+          _
+          {form.title}
         </div>
       ))}
     </div>

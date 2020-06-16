@@ -3,13 +3,13 @@ import 'reflect-metadata';
 import * as fs from 'fs';
 import express from 'express';
 import * as bodyParser from 'body-parser';
+import { matchPath } from 'react-router-dom';
 import { paths } from '../../build/paths';
 import { connection } from './db';
 import { config } from '../config/config';
 import apiRouter from './routes/api.router';
 import main from './app';
 import nodeErrorHandler from './middlewares/nodeErrorHandler';
-import { matchPath } from 'react-router-dom';
 
 const PORT: number = config.server.port;
 const HOST: string = config.server.host;
@@ -43,7 +43,7 @@ export class App implements IApp {
           return res.status(404).send('Something went wrong');
         }
         return res.send(
-          data.replace('<div id="root"></div>', `<div id="root">${root}</div>`)
+          data.replace('<div id="root"></div>', `<div id="root">${root}</div>`),
         );
       });
     });
@@ -52,7 +52,7 @@ export class App implements IApp {
   startApp = async (): Promise<void> => {
     const conn = await connection;
     console.log(
-      `Connected to database. Connection: ${conn.name} / ${conn.options.database}`
+      `Connected to database. Connection: ${conn.name} / ${conn.options.database}`,
     );
     await this.startServer();
   };

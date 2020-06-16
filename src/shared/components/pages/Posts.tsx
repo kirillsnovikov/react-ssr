@@ -13,7 +13,9 @@ const Posts = () => {
     <div>
       {posts.map((post) => (
         <div key={post.id}>
-          {post.id}_{post.title}
+          {post.id}
+          _
+          {post.title}
         </div>
       ))}
     </div>

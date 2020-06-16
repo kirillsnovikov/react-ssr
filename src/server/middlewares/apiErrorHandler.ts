@@ -9,7 +9,7 @@ function validationMiddleware(req: Request, res: Response, next: NextFunction) {
     apiResponse.bodyErrors(
       res,
       httpStatusCodes.UNPROCESSABLE_ENTITY,
-      errors.array()
+      errors.array(),
     );
   } else {
     next();

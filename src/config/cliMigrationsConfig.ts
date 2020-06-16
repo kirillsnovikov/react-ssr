@@ -1,6 +1,6 @@
-import { paths } from '../../build/paths';
 import { ConnectionOptions } from 'typeorm';
-import { config } from '../config/config';
+import { paths } from '../../build/paths';
+import { config } from './config';
 
 const { migrations } = paths;
 
@@ -19,7 +19,7 @@ const cliConfig: ConnectionOptions = {
   // allow both start:prod and start:dev to use migrations
   // __dirname is either dist or src folder, meaning either
   // the compiled js in prod or the ts in dev
-  migrations: [migrations + '/**/*{.ts,.js}'],
+  migrations: [`${migrations}/**/*{.ts,.js}`],
   cli: {
     migrationsDir: 'src/server/db/migrations',
   },

@@ -1,5 +1,5 @@
-import { validator } from '../middlewares/apiErrorHandler';
 import { checkSchema } from 'express-validator';
+import { validator } from '../middlewares/apiErrorHandler';
 
 export const FormValidator = validator(
   checkSchema({
@@ -23,5 +23,5 @@ export const FormValidator = validator(
         },
       },
     },
-  })
+  }),
 );

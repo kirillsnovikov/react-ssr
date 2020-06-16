@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { postRepository } from './index';
 import httpStatusCodes from 'http-status-codes';
+import { postRepository } from './index';
 import apiResponse from '../../utilites/apiResponse';
 import findById from './findById';
 

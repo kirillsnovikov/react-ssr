@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { postRepository } from './index';
 import httpStatusCodes from 'http-status-codes';
+import { postRepository } from './index';
 import apiResponse from '../../utilites/apiResponse';
 
 export default async (req: Request, res: Response) => {
@@ -12,7 +12,6 @@ export default async (req: Request, res: Response) => {
   if (data) {
     apiResponse.result(res, data, httpStatusCodes.OK);
     return data;
-  } else {
-    apiResponse.error(res, httpStatusCodes.BAD_REQUEST);
   }
+  apiResponse.error(res, httpStatusCodes.BAD_REQUEST);
 };

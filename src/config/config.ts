@@ -1,12 +1,13 @@
 import * as dotenv from 'dotenv';
 import { ConnectionOptions } from 'typeorm';
 import { Form, Post } from '../server/models';
+
 dotenv.config();
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 const entities = [Form, Post];
 
-export const config = {
+const config = {
   name: process.env.APP_NAME,
   db: <ConnectionOptions>{
     type: isDevelopment ? process.env.DEV_DB_TYPE : process.env.DB_TYPE,
@@ -27,3 +28,5 @@ export const config = {
       : Number(process.env.PORT),
   },
 };
+
+export { config as default };
